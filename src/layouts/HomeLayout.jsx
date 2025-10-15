@@ -18,7 +18,7 @@ const HomeLayout = () => {
                     <Navbar></Navbar>
                 </nav>
             </header>
-            <main className='w-11/12 mx-auto grid grid-cols-12 my-5'>
+            <main className='w-11/12 mx-auto grid grid-cols-12 gap-5 my-5'>
                 <aside className='col-span-3'>
                     <Suspense fallback={<span className="loading loading-infinity loading-xl"></span>}>
                         <LeftAside></LeftAside>
