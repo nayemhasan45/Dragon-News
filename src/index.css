@@ -19,3 +19,9 @@
     font-family: "Poppins", sans-serif;
     /* background-color: white; */
 }
+
+a.active{
+    background-color: #E7E7E7;
+    padding: 10px;
+    border-radius: 5px;
+}

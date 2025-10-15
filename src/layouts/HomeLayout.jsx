@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Outlet } from 'react-router';
 import Header from '../components/Header';
 import LatestNewsMarquee from '../components/LatestNewsMarquee';
 import Navbar from '../components/Navbar';
+import LeftAside from '../components/home/LeftAside';
+import RightAside from '../components/home/RightAside';
 
 const HomeLayout = () => {
     return (
@@ -16,16 +18,18 @@ const HomeLayout = () => {
                     <Navbar></Navbar>
                 </nav>
             </header>
-            <main>
-                <section className='left_content'>
-
-                </section>
-                <section className='main'>
+            <main className='w-11/12 mx-auto grid grid-cols-12 my-5'>
+                <aside className='col-span-3'>
+                    <Suspense fallback={<span className="loading loading-infinity loading-xl"></span>}>
+                        <LeftAside></LeftAside>
+                    </Suspense>
+                </aside>
+                <section className='main col-span-6'>
                     <Outlet></Outlet>
                 </section>
-                <section className='right_content'>
-
-                </section>
+                <aside className='col-span-3'>
+                    <RightAside></RightAside>
+                </aside>
             </main>
         </div>
     );
