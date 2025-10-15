@@ -1,9 +1,10 @@
 import React from 'react';
+import Category from '../components/home/Category';
 
 const HomePage = () => {
     return (
         <div>
-            <h1>home</h1>
+            {/* <Category></Category> */}
         </div>
     );
 };

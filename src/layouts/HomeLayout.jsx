@@ -19,7 +19,7 @@ const HomeLayout = () => {
                 </nav>
             </header>
             <main className='w-11/12 mx-auto grid grid-cols-12 gap-5 my-5'>
-                <aside className='col-span-3'>
+                <aside className='col-span-3 h-fit sticky top-0'>
                     <Suspense fallback={<span className="loading loading-infinity loading-xl"></span>}>
                         <LeftAside></LeftAside>
                     </Suspense>
@@ -27,7 +27,7 @@ const HomeLayout = () => {
                 <section className='main col-span-6'>
                     <Outlet></Outlet>
                 </section>
-                <aside className='col-span-3'>
+                <aside className='col-span-3 h-fit sticky top-0'>
                     <RightAside></RightAside>
                 </aside>
             </main>
