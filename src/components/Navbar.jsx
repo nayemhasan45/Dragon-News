@@ -1,8 +1,11 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink, useLocation } from 'react-router';
 import user from '../assets/user.png';
 
 const Navbar = () => {
+    const location = useLocation();
+    const isAuthPage = location.pathname.startsWith('/auth');
+
     return (
         <div className='flex items-center justify-between'>
             <div></div>
@@ -13,7 +16,9 @@ const Navbar = () => {
             </div>
             <div className='flex items-center gap-3'>
                 <img src={user} alt="" />
-                <button className="btn btn-primary px-8 py-5 text-white">Login</button>
+                {!isAuthPage && (
+                    <Link to={'/auth/login'} className="btn btn-primary px-8 py-5 text-white">Login</Link>
+                )}
             </div>
         </div>
     );
