@@ -1,6 +1,7 @@
-import React from 'react';
+
 import { Link, NavLink, useLocation } from 'react-router';
 import user from '../assets/user.png';
+
 
 const Navbar = () => {
     const location = useLocation();
