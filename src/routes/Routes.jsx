@@ -8,6 +8,8 @@ import Register from "../pages/Register";
 import NewsDetails from "../pages/NewsDetails";
 import About from "../pages/About";
 import Career from "../pages/Career";
+import PrivateRoute from "../layouts/PrivateRoute";
+import { Suspense } from "react";
 
 
 const router = createBrowserRouter([
@@ -31,27 +33,30 @@ const router = createBrowserRouter([
         Component: AuthLayout,
         children: [
             {
-                path: 'login',
+                path: '/auth/login',
                 Component: Login,
             },
             {
-                path: 'register',
+                path: '/auth/register',
                 Component: Register,
             }
         ]
     },
     {
-        path:'/newsDetails/:id',
-        loader:()=> fetch('/news.json'),
-        Component:NewsDetails,
+        path: '/newsDetails/:id',
+        loader: () => fetch('/news.json'),
+        element: <Suspense fallback={<span className="loading loading-spinner text-error"></span>
+        }>
+            <PrivateRoute><NewsDetails></NewsDetails></PrivateRoute>
+        </Suspense>
     },
     {
-        path:'/about',
-        Component:About,
+        path: '/about',
+        Component: About,
     }
-    ,{
-        path:'/career',
-        Component:Career,
+    , {
+        path: '/career',
+        Component: Career,
     }
 ])
 export default router;
