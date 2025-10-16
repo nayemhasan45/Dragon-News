@@ -5,10 +5,12 @@ import LatestNewsMarquee from '../components/LatestNewsMarquee';
 import Navbar from '../components/Navbar';
 import LeftAside from '../components/home/LeftAside';
 import RightAside from '../components/home/RightAside';
+import ScrollToTop from '../components/ScrollToTop';
 
 const HomeLayout = () => {
     return (
         <div>
+            <ScrollToTop></ScrollToTop>
             <header>
                 <Header></Header>
                 <section className='marquee w-11/12 mx-auto my-3'>
