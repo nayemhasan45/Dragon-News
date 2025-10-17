@@ -1,16 +1,15 @@
 import { createBrowserRouter } from "react-router";
+import Loading from "../components/Loading";
 import AuthLayout from "../layouts/AuthLayout";
 import HomeLayout from "../layouts/HomeLayout";
+import PrivateRoute from "../layouts/PrivateRoute";
+import About from "../pages/About";
+import Career from "../pages/Career";
 import CategoryNews from "../pages/CategoryNews";
 import HomePage from "../pages/HomePage";
 import Login from "../pages/Login";
-import Register from "../pages/Register";
 import NewsDetails from "../pages/NewsDetails";
-import About from "../pages/About";
-import Career from "../pages/Career";
-import PrivateRoute from "../layouts/PrivateRoute";
-import { Suspense } from "react";
-import Loading from "../components/Loading";
+import Register from "../pages/Register";
 
 
 const router = createBrowserRouter([
@@ -26,7 +25,7 @@ const router = createBrowserRouter([
                 path: '/category/:id',
                 Component: CategoryNews,
                 loader: () => fetch('/news.json'),
-                hydrateFallbackElement:<Loading></Loading>
+                hydrateFallbackElement: <Loading></Loading>
             }
         ]
     },
@@ -48,7 +47,7 @@ const router = createBrowserRouter([
         path: '/newsDetails/:id',
         loader: () => fetch('/news.json'),
         element: <PrivateRoute><NewsDetails></NewsDetails></PrivateRoute>,
-        hydrateFallbackElement:<Loading></Loading>
+        hydrateFallbackElement: <Loading></Loading>
     },
     {
         path: '/about',

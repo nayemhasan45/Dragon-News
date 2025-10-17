@@ -1,11 +1,10 @@
 import React from 'react';
-import CategoryNews from './Category';
 import Category from './Category';
 
-const LeftAside = () => {
+const LeftAside = ({ onCategoryClick }) => {
     return (
         <div>
-            <Category></Category>
+            <Category onCategoryClick={onCategoryClick}></Category>
         </div>
     );
 };

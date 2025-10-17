@@ -22,11 +22,11 @@ const NewsDetails = () => {
                 <Navbar></Navbar>
             </header>
             <main className='w-11/12 mx-auto grid grid-cols-12 gap-5 mt-5'>
-                <section className='col-span-9'>
+                <section className='col-span-12 md:col-span-9'>
                     <h3 className="text-3xl font-semibold">Dragon News</h3>
                     <NewsDetailsCard news={news}></NewsDetailsCard>
                 </section>
-                <section className='col-span-3'>
+                <section className='col-span-3 hidden md:block'>
                     <aside>
                         <RightAside></RightAside>
                     </aside>
