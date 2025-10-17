@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { AuthContext } from "./FirebaseAuthContext";
 import { auth } from "./firebase.config";
 import { useEffect, useState } from "react";
@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 const FirebaseAuthProvider = ({children}) => {
     const [crUser,setCrUser]=useState(null);
     const [loading,setLoading]=useState(true);
+    // creating user with email and password 
     // creating a user 
     const createUser =(email,password)=>{
         setLoading(true);
@@ -23,6 +24,19 @@ const FirebaseAuthProvider = ({children}) => {
         setLoading(true);
         return signOut(auth);
     }
+
+    // signin user with google 
+    const provider = new GoogleAuthProvider();
+    const googleSignIn=()=>{
+        return signInWithPopup(auth,provider);
+    }
+
+    // signin user with github 
+    const gitProvider = new GithubAuthProvider();
+    const githubSignIn=()=>{
+        return signInWithPopup(auth,gitProvider);
+    }
+
     // setObserver to save the user data
     useEffect(()=>{
         const unSubscribe =onAuthStateChanged(auth,(currentUser)=>{
@@ -37,6 +51,8 @@ const FirebaseAuthProvider = ({children}) => {
         createUser,
         signInUser,
         signOutUser,
+        googleSignIn,
+        githubSignIn,
         crUser,
         loading,
     }

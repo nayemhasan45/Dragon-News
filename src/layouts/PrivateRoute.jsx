@@ -1,17 +1,20 @@
 import React, { use } from 'react';
 import { AuthContext } from '../firebase/FirebaseAuthContext';
-import { Navigate } from 'react-router';
+import { Navigate, useLocation } from 'react-router';
+import Loading from '../components/Loading';
 
 
 const PrivateRoute = ({children}) => {
     const {crUser,loading}=use(AuthContext);
+    const location = useLocation();
+    console.log(location);
     if(loading){
-        return <span className="loading loading-infinity loading-xl"></span>
+        return <Loading></Loading>
     }
     if(crUser &&crUser?.email){
         return children;
     }
-    return <Navigate to={'/auth/login'}></Navigate>
+    return <Navigate state={location.pathname} to={'/auth/login'}></Navigate>
 };
 
 export default PrivateRoute;

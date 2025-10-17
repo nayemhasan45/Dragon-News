@@ -10,6 +10,7 @@ import About from "../pages/About";
 import Career from "../pages/Career";
 import PrivateRoute from "../layouts/PrivateRoute";
 import { Suspense } from "react";
+import Loading from "../components/Loading";
 
 
 const router = createBrowserRouter([
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
                 path: '/category/:id',
                 Component: CategoryNews,
                 loader: () => fetch('/news.json'),
+                hydrateFallbackElement:<Loading></Loading>
             }
         ]
     },
@@ -45,10 +47,8 @@ const router = createBrowserRouter([
     {
         path: '/newsDetails/:id',
         loader: () => fetch('/news.json'),
-        element: <Suspense fallback={<span className="loading loading-spinner text-error"></span>
-        }>
-            <PrivateRoute><NewsDetails></NewsDetails></PrivateRoute>
-        </Suspense>
+        element: <PrivateRoute><NewsDetails></NewsDetails></PrivateRoute>,
+        hydrateFallbackElement:<Loading></Loading>
     },
     {
         path: '/about',

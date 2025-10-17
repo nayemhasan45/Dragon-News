@@ -3,15 +3,17 @@ import { Link, NavLink } from 'react-router';
 import user from '../assets/user.png';
 import { use } from 'react';
 import { AuthContext } from '../firebase/FirebaseAuthContext';
+import LogoutUserSuccess from './LogoutUserSuccess';
 
 
 const Navbar = () => {
     const {crUser,signOutUser}=use(AuthContext);
+    console.log(crUser);
     
     // handling  logOut button 
     const handleLogOut=()=>{
         signOutUser();
-        alert('log out successful');
+        LogoutUserSuccess();
     }
 
 
@@ -25,7 +27,7 @@ const Navbar = () => {
             </div>
             <div className='flex items-center gap-3'>
                 {
-                    crUser&& <p>{crUser.email}</p>
+                    crUser&& <p>{crUser.email?crUser.email:crUser.displayName}</p>
                 }
                 <img src={user} alt="" />
                 {
