@@ -10,6 +10,7 @@ import HomePage from "../pages/HomePage";
 import Login from "../pages/Login";
 import NewsDetails from "../pages/NewsDetails";
 import Register from "../pages/Register";
+import ForgetPassword from "../pages/ForgetPassword";
 
 
 const router = createBrowserRouter([
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
             {
                 path: '/auth/register',
                 Component: Register,
+            },
+            {
+                path:'/auth/forgetPassword',
+                Component:ForgetPassword,
             }
         ]
     },

@@ -10,16 +10,15 @@ const SocialLogin = () => {
          //showing the success alter 
          LoginUserSuccess();
         })
-        .catch(err=>console.log(err))
+        .catch(()=>alert('failed'))
     }
     const handleGithubLogin=()=>{
-        console.log('git clicked');
         githubSignIn()
         .then(()=>{
             LoginUserSuccess();
         })
         .catch((err)=>{
-            console.log(err)
+           alert(err)
         })
     }
     return (

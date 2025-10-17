@@ -2,6 +2,7 @@ import React, { use, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../firebase/FirebaseAuthContext';
 import LoginUserSuccess from '../components/LoginUserSuccess';
+import LoginUserUnsuccess from '../components/LoginUserUnsuccess';
 
 const Login = () => {
     const { signInUser } = use(AuthContext);
@@ -20,6 +21,7 @@ const Login = () => {
             })
             .catch(() => {
                 setError("Invalid Credential");
+                LoginUserUnsuccess();
             });
         e.target.reset();
     };
@@ -38,7 +40,7 @@ const Login = () => {
                         <input type="password" name='password' className="input input-bordered w-full" placeholder="Password" required />
 
                         <div className="flex justify-end text-xs sm:text-sm">
-                            <a className="link link-hover text-secondary">Forgot password?</a>
+                            <Link to={'/auth/forgetPassword'} className="link link-hover text-secondary">Forgot password?</Link>
                         </div>
 
                         <button className="btn btn-neutral w-full mt-2 sm:mt-4">Login</button>

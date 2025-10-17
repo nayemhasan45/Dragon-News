@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { AuthContext } from "./FirebaseAuthContext";
 import { auth } from "./firebase.config";
 import { useEffect, useState } from "react";
@@ -37,6 +37,11 @@ const FirebaseAuthProvider = ({children}) => {
         return signInWithPopup(auth,gitProvider);
     }
 
+    // forget password 
+    const forgetPassword=(email)=>{
+        return sendPasswordResetEmail(auth,email);
+    }
+
     // setObserver to save the user data
     useEffect(()=>{
         const unSubscribe =onAuthStateChanged(auth,(currentUser)=>{
@@ -53,6 +58,7 @@ const FirebaseAuthProvider = ({children}) => {
         signOutUser,
         googleSignIn,
         githubSignIn,
+        forgetPassword,
         crUser,
         loading,
     }

@@ -2,6 +2,7 @@ import React, { use, useState } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../firebase/FirebaseAuthContext';
 import RegisterUserSuccess from '../components/RegisterUserSuccess';
+import RegisterUserUnsuccess from '../components/RegisterUserUnsuccess';
 
 const Register = () => {
     const { createUser, signOutUser } = use(AuthContext);
@@ -38,7 +39,9 @@ const Register = () => {
                 signOutUser();
                 RegisterUserSuccess();
             })
-            .catch(err => console.log(err));
+            .catch(() => {
+                RegisterUserUnsuccess();
+            });
 
         e.target.reset();
     };

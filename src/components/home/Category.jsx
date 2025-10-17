@@ -13,8 +13,8 @@ const Category = ({ onCategoryClick }) => {
         setCategories(data);
         setLoading(false);
       })
-      .catch(err => {
-        console.error(err);
+      .catch(()=> {
+
         setLoading(false);
       });
   }, []);
